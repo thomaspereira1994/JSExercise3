@@ -40,7 +40,7 @@ function calculateMultiples(numbers, firstInput, secondInput) {
         }
         templateRows += `<tr><td class = "${className}">${number}</td></tr>`;
     }
-    displayResults();
+    displayResults(templateRows);
 }
 
 function displayResults(templateRows) {
