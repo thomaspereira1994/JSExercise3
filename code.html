@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Thomas Pereira</title>
+    <title>Multiple Finder: A Coding Project by Thomas Pereira</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,7 @@
     <!-- NAV SECTION -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">APP NAME</a>
+            <a class="navbar-brand" href="#">Multiple Finder</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -59,16 +59,66 @@
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        //call hello world
-                        function HelloWorld(){
-                        alert("hello world");
+                        function getValues() {
+                            //gets values in input boxes
+                            let firstInput = document.getElementById("firstInput").value;
+                            let secondInput = document.getElementById("secondInput").value;
+                        
+                            //parses values into integers
+                            firstInput = parseInt(firstInput);
+                            secondInput = parseInt(secondInput);
+                        
+                            if (Number.isInteger(firstInput) && Number.isInteger(secondInput)) {
+                                let numbers = generateNumbers();
+                                calculateMultiples(numbers, firstInput, secondInput);
+                            } else {
+                                alert("input values must be integers");
+                            }
                         }
+                        
+                        function generateNumbers() {
+                            let numbers = [];
+                        
+                            for (let index = 1; index <= 100; index++) {
+                                numbers.push(index);
+                            }
+                            return numbers;
+                        }
+                        
+                        function calculateMultiples(numbers, firstInput, secondInput) {
+                            let templateRows = "";
+                        
+                            for (let i = 0; i < numbers.length; i++) {
+                                let className = "";
+                                let number = numbers[i];
+                        
+                                if (number % firstInput == 0 && number % secondInput == 0) {
+                                    className = "both-multiple";
+                                }
+                                else  if (number % firstInput == 0) {
+                                    className = "first-multiple";
+                                } else if (number % secondInput == 0) {
+                                    className = "second-multiple";
+                                }
+                                templateRows += `<tr><td class = "${className}">${number}</td></tr>`;
+                            }
+                            document.getElementById("results").innerHTML = templateRows;
+                        }
+                        
                     </code></pre>
                 </div>
                 <div class="col-lg-4 pt-2">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello world</h5>
-                    <p>Hello world is a function that displays an alert with a message of hello world</p>
+                    <p>The Code is structured in three functions.</p>
+                    <h5>getValues</h5>
+                    <p>getValues reads the user's input, checks if they are valid, and calls other functions
+                        to calculate the results.
+                    </p>
+                    <h5>generateNumbers</h5>
+                    <p>generateNumbers creates an array of integers from 1 to 100.</p>
+                    <h5>calculateMultiples</h5>
+                    <p>calculateMultiples is the brains of the app. It will calculate whether the user's input
+                        is a multiple of each integer from 1 to 100, and assign the according CSS class.
+                    </p>
                 </div>
             </div>
         </div>

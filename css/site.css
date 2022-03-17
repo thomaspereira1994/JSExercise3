@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #1d5888;
-    --secondary-color: #ff993b;
+    --primary-color: #5A4AE3;
+    --secondary-color: #EFEFEF;
     --dark-color: #292929;
     --white-color: #dff3e4;
 }
@@ -60,7 +60,7 @@ footer .social>a:hover{
 }
 
 .checklist >li i{
-    color:var(--secondary-color)
+    color:var(--primary-color)
 }
 
 code[class*="language-"],
@@ -68,4 +68,19 @@ pre[class*="language-"] {
 white-space: pre-wrap;
 word-break: break-all;
 word-wrap: break-word;
+}
+
+.first-multiple{
+    color: blue;
+    font-weight: bold;
+}
+
+.second-multiple{
+    color: red;
+    font-weight: bold;
+}
+
+.both-multiple{
+    color: purple;
+    font-weight: bold;
 }
